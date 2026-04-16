@@ -22,7 +22,6 @@ export default class TaskView {
       <li class="task-item${task.completed ? ' completed' : ''}" data-id="${task.id}">
         <label>
           <input class="task-checkbox" type="checkbox" data-id="${task.id}" ${task.completed ? 'checked' : ''} />
-          <span class="sr-only">Concluída</span>
         </label>
 
         <p class="task-title">${this._escapeHtml(task.title)}</p>
