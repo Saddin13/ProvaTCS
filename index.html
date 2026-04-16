@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do List MVC</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #f4f5f7;
+      color: #1f2937;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(640px, 100%);
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      padding: 32px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 1.75rem + 1vw, 2.5rem);
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: #4b5563;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color .2s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background .2s ease;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .task-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .task-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+    }
+
+    .task-item.completed .task-title {
+      text-decoration: line-through;
+      color: #6b7280;
+    }
+
+    .task-title {
+      margin: 0;
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    .task-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .task-controls button {
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .task-controls button:hover {
+      background: #d1d5db;
+    }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      border-radius: 18px;
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px dashed #c7d2fe;
+    }
+
+    .feedback {
+      margin-top: 16px;
+      color: #065f46;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <h1>Gerenciador de Tarefas</h1>
+    <p>Crie, visualize, edite e remova tarefas com persistência no localStorage.</p>
+
+    <form id="task-form">
+      <input type="text" id="task-input" placeholder="Adicione uma nova tarefa" aria-label="Nova tarefa" autocomplete="off" />
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="task-list" class="task-list"></ul>
+    <div id="empty-state" class="empty-state" hidden>
+      Nenhuma tarefa encontrada. Adicione a primeira tarefa para começar.
+    </div>
+
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
